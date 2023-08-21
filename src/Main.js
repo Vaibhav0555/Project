@@ -2,6 +2,7 @@ import {React, useState} from 'react';
 import {View, Text, FlatList, Pressable} from 'react-native';
 import ImageUpload from './ImageUpload';
 import VideoUpload from './VideoUpload';
+import AudioUpload from './AudioUpload';
 const Temp = [
   {id: 1, title: 'image', isChecked: true},
   {id: 2, title: 'video', isChecked: false},
@@ -48,6 +49,7 @@ const Main = () => {
       <View style={{flex: 0.95}}>
         {selectedButton === 1 && <ImageUpload />}
         {selectedButton === 2 && <VideoUpload />}
+        {/* {selectedButton === 3 && <AudioUpload />} */}
       </View>
     </View>
   );

@@ -14,6 +14,7 @@ import ImagePicker from 'react-native-image-crop-picker';
 import Video from 'react-native-video';
 import {videoUpload} from './store/uploadSlice';
 import {useDispatch, useSelector} from 'react-redux';
+import axios from 'axios';
 const VideoUpload = () => {
   const dispatch = useDispatch();
   const vid = useSelector(state => state.upload.uploadVideo);
@@ -42,17 +43,17 @@ const VideoUpload = () => {
   };
 
   const TimeChange = time => {
-    console.log('--->time', start);
+    // console.log('--->time', start);
     let parts = time.split(':');
     let minute = parts[0];
-    console.log('minute-->', minute);
+    // console.log('minute-->', minute);
     let sec = parts[1];
-    console.log('sec-->', sec);
+    // console.log('sec-->', sec);
 
     let minuteToMilli = minute * 60000;
     let secToMilli = sec * 1000;
     const totalSec = minuteToMilli + secToMilli;
-    console.log('totalSec', totalSec);
+    // console.log('totalSec', totalSec);
     return totalSec;
   };
 
@@ -62,6 +63,32 @@ const VideoUpload = () => {
     if (startTime < endTime) {
     } else {
       Alert.alert('please Select Right time');
+    }
+  };
+
+  const uploadVideoToServer = async () => {
+    console.log('--->', vid.path);
+    try {
+      const formData = new FormData();
+      formData.append('MyFile', {
+        uri: vid.path,
+        type: 'video/mp4', // Adjust the type according to your image file type
+        name: 'video.mp4',
+      });
+
+      const response = await axios.post(
+        'https://08d4-2401-4900-1c5c-5861-b805-5068-d3cb-b143.ngrok-free.app/upload',
+        formData,
+        {
+          headers: {
+            'Content-Type': 'multipart/form-data',
+          },
+        },
+      );
+
+      console.log('Video uploaded successfully!', response.data);
+    } catch (error) {
+      console.error('Error uploading image', error);
     }
   };
 
@@ -134,11 +161,11 @@ const VideoUpload = () => {
             }}>
             <Text>Trim Video</Text>
           </Pressable>
-          {/* <Pressable
-            onPress={() => uploadVideoHandler()}
-            style={{borderWidth: 2, borderRadius: 5, width: 120, padding: 10}}>
+          <Pressable
+            onPress={() => uploadVideoToServer()}
+            style={{borderWidth: 2, borderRadius: 5, width: 115, padding: 10}}>
             <Text>Upload Video</Text>
-          </Pressable> */}
+          </Pressable>
         </View>
       </View>
     </ScrollView>
