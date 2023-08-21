@@ -14,7 +14,7 @@ const ImageUpload = () => {
     ImagePicker.openCamera({
       width: 400,
       height: 400,
-      cropping: false,
+      cropping: true,
     }).then(image => {
       const uri = image;
       dispatch(photoUpload(uri));
@@ -25,7 +25,7 @@ const ImageUpload = () => {
     ImagePicker.openPicker({
       width: 400,
       height: 400,
-      cropping: false,
+      cropping: true,
     }).then(image => {
       const uri = image;
       dispatch(photoUpload(uri));
