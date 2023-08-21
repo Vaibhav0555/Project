@@ -1,5 +1,12 @@
 import {React, useEffect, useState} from 'react';
-import {View, Text, Pressable, Image, ImageBackground} from 'react-native';
+import {
+  View,
+  Text,
+  Pressable,
+  Image,
+  ImageBackground,
+  Alert,
+} from 'react-native';
 import ImagePicker from 'react-native-image-crop-picker';
 import {photoUpload} from './store/uploadSlice';
 import {useDispatch, useSelector} from 'react-redux';
@@ -55,6 +62,7 @@ const ImageUpload = () => {
       );
 
       console.log('Image uploaded successfully!', response.data);
+      Alert.alert('Image uploaded sucessfully');
     } catch (error) {
       console.error('Error uploading image', error);
     }

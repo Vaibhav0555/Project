@@ -88,6 +88,7 @@ const VideoUpload = () => {
       );
 
       console.log('Video uploaded successfully!', response.data);
+      Alert.alert('video uploaded sucessfully');
     } catch (error) {
       console.error('Error uploading image', error);
     }
@@ -126,48 +127,12 @@ const VideoUpload = () => {
             <Text>Upload Video</Text>
           </Pressable>
         </View>
-        <View style={{flexDirection: 'row', marginBottom: 20}}>
-          <View style={{flexDirection: 'row'}}>
-            <Text style={{marginRight: 10, marginTop: 10}}>From</Text>
-            <TextInput
-              placeholder="mm:ss"
-              onChangeText={e => {
-                setStart(e);
-                console.log(start);
-              }}
-              style={{borderWidth: 1, borderRadius: 5, padding: 10}}
-            />
-          </View>
-          <View style={{flexDirection: 'row'}}>
-            <Text style={{marginRight: 10, marginTop: 10}}>To</Text>
-            <TextInput
-              placeholder="mm:ss"
-              onChangeText={e => {
-                setEnd(e);
-                console.log(end);
-              }}
-              style={{borderWidth: 1, borderRadius: 5, padding: 10}}
-            />
-          </View>
-        </View>
-        <View style={{flexDirection: 'row'}}>
-          <Pressable
-            onPress={() => trim()}
-            style={{
-              borderWidth: 2,
-              borderRadius: 5,
-              width: 110,
-              padding: 10,
-              marginRight: 10,
-            }}>
-            <Text>Trim Video</Text>
-          </Pressable>
-          <Pressable
-            onPress={() => uploadVideoToServer()}
-            style={{borderWidth: 2, borderRadius: 5, width: 115, padding: 10}}>
-            <Text>Upload Video</Text>
-          </Pressable>
-        </View>
+
+        <Pressable
+          onPress={() => uploadVideoToServer()}
+          style={{borderWidth: 2, borderRadius: 5, width: 115, padding: 10}}>
+          <Text>Upload Video</Text>
+        </Pressable>
       </View>
     </ScrollView>
   );

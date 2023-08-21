@@ -1,4 +1,4 @@
-import {View, Text, Button, Pressable} from 'react-native';
+import {View, Text, Button, Pressable, Alert} from 'react-native';
 import React, {useState} from 'react';
 import DocumentPicker from 'react-native-document-picker';
 import {audioUpload} from './store/uploadSlice';
@@ -43,6 +43,7 @@ const AudioUpload = () => {
       );
 
       console.log('Audio uploaded successfully!', response.data);
+      Alert.alert('Audio uploaded sucessfully');
     } catch (error) {
       console.error('Error uploading image', error);
     }
