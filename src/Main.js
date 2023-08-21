@@ -49,7 +49,7 @@ const Main = () => {
       <View style={{flex: 0.95}}>
         {selectedButton === 1 && <ImageUpload />}
         {selectedButton === 2 && <VideoUpload />}
-        {/* {selectedButton === 3 && <AudioUpload />} */}
+        {selectedButton === 3 && <AudioUpload />}
       </View>
     </View>
   );

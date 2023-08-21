@@ -16,6 +16,9 @@ export const uploadSlice = createSlice({
     videoUpload: (state, action) => {
       state.uploadVideo = action.payload;
     },
+    audioUpload: (state, action) => {
+      state.uploadAudio = action.payload;
+    },
     // incrementByAmount: (state, action) => {
     //   state.value += action.payload
     // },
@@ -23,6 +26,6 @@ export const uploadSlice = createSlice({
 });
 
 // Action creators are generated for each case reducer function
-export const {photoUpload, videoUpload} = uploadSlice.actions;
+export const {photoUpload, videoUpload, audioUpload} = uploadSlice.actions;
 
 export default uploadSlice.reducer;
